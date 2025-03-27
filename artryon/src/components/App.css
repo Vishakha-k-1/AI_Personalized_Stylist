@@ -1,0 +1,43 @@
+.outfit-selection-container {
+    text-align: center;
+    margin: 30px;
+  }
+  
+  .outfit-cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .outfit-card {
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    width: 150px;
+    max-width: 200px;
+    height: 250px;
+  }
+  
+  .outfit-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .outfit-image {
+    width: 100%;
+    max-height: 120px;
+    object-fit: contain;
+    margin-bottom: 10px;
+  }
+  
+  .outfit-card p {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+  }
+  
