@@ -23,7 +23,7 @@ const App = () => {
           </OutfitTryOnPage>
         } />
         <Route path="/ai-stylist" element={<AIStylistPage />} />
-        <Route path="/outfit-recommend" element={<OutfitRecommendation />} /> 
+        <Route path="/outfit-recommendation" element={<OutfitRecommendation />} /> 
       </Routes>
     </Router>
   );

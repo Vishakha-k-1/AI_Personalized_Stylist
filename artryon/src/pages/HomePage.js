@@ -1,17 +1,28 @@
-// pages/HomePage.js
-import React from 'react';
-import { Link } from 'react-router-dom';
-import '../HomePage.css';
+import React from "react";
+import { Link } from "react-router-dom";
+import "../HomePage.css";
+import heroImage from "../assets/hero.jpg"; // Add a stylish hero image
 
 const HomePage = () => {
   return (
     <div className="home-page">
-      
+      {/* Hero Section */}
       <section className="hero-section">
-        <h1>Welcome to Stylo!</h1>
-        <p>Your personal fashion assistant powered by AI & AR</p>
+        <div className="hero-content">
+          <h1 className="fade-in">Welcome to <span className="brand">Stylo!</span></h1>
+          <p className="fade-in-delay">Your personal fashion assistant powered by AI & AR</p>
+          <Link to="/ai-stylist">
+            <button className="cta-button">Get Styled Now</button>
+          </Link>
+        </div>
+
+        {/* Hero Image */}
+        <div className="hero-image">
+          <img src={heroImage} alt="Fashion AI Stylist" className="fade-in-scale" />
+        </div>
       </section>
 
+      {/* Features Section */}
       <section className="features-section">
         <div className="feature-card">
           <h3>AR Try-On</h3>
@@ -30,9 +41,9 @@ const HomePage = () => {
         </div>
 
         <div className="feature-card">
-          <h3>Find your Outfit</h3>
+          <h3>Find Your Outfit</h3>
           <p>Discover outfit colors that match your skin tone!</p>
-          <Link to="/outfit-recommend">
+          <Link to="/outfit-recommendation">
             <button>Try Now</button>
           </Link>
         </div>

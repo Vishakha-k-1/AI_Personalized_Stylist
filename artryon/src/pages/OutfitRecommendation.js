@@ -1,44 +1,43 @@
 import React, { useState } from "react";
-import SkinToneDetector from "../components/SkinToneDetector";
 
-const OutfitRecommendation = () => {
-  const [skinTone, setSkinTone] = useState(null);
-  const [outfit, setOutfit] = useState(null);
+import ImageUpload from "../components/ImageUpload";
 
-  // Outfit recommendations based on skin tone
-  const outfitSuggestions = {
-    Warm: ["Earthy Tones", "Beige", "Orange", "Brown", "Gold"],
-    Cool: ["Blue", "Purple", "Silver", "Emerald", "Lavender"],
-    Neutral: ["Black", "White", "Gray", "Pastels", "Denim"],
-  };
+function App() {
+  const [skinTone, setSkinTone] = useState("");
+  const [capturedImage, setCapturedImage] = useState("");
 
-  const handleSkinToneDetected = (tone) => {
-    setSkinTone(tone);
-    setOutfit(outfitSuggestions[tone]);
+  const recommendDress = (skinTone) => {
+    if (skinTone === "Fair") {
+      return "Light color dresses like pastels, soft shades, or white.";
+    } else if (skinTone === "Warm") {
+      return "Earthy tones, warm shades like oranges, browns, and gold.";
+    } else if (skinTone === "Dark") {
+      return "Bold colors like red, navy, or jewel tones.";
+    } else {
+      return "No dress recommendation available.";
+    }
   };
 
   return (
-    <div style={styles.container}>
-      <h1>Find Outfit by Skin Tone</h1>
-      <SkinToneDetector onDetect={handleSkinToneDetected} />
+    <div className="app">
+      <h1>Skin Tone Detection and Dress Recommendation</h1>
+      <ImageUpload setSkinTone={setSkinTone} setCapturedImage={setCapturedImage} />
+
+      {capturedImage && (
+        <div className="result">
+          <h3>Detected Skin Tone: {skinTone}</h3>
+          <img src={capturedImage} alt="Captured Face" className="captured-image" />
+        </div>
+      )}
+
       {skinTone && (
-        <div style={styles.result}>
-          <h2>Your Skin Tone: {skinTone}</h2>
-          <p>Recommended Outfit Colors:</p>
-          <ul>
-            {outfit.map((color, index) => (
-              <li key={index}>{color}</li>
-            ))}
-          </ul>
+        <div className="recommendation">
+          <h3>Recommended Dress:</h3>
+          <p>{recommendDress(skinTone)}</p>
         </div>
       )}
     </div>
   );
-};
+}
 
-const styles = {
-  container: { textAlign: "center", padding: "20px" },
-  result: { marginTop: "20px", padding: "15px", background: "#f8f9fa", borderRadius: "8px" },
-};
-
-export default OutfitRecommendation;
+export default App;
